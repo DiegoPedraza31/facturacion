@@ -1,0 +1,10 @@
+{
+    "require": {
+        "mpdf/mpdf": "^5.7",
+        "dompdf/dompdf": "^0.6.2",
+        "tecnickcom/tcpdf": "^6.7",
+        "setasign/fpdi": "^2.6",
+        "fpdf/fpdf": "^1.86",
+        "phpoffice/phpspreadsheet": "^4.1"
+    }
+}
