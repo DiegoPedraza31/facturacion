@@ -52,15 +52,31 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
 -- Volcado de datos para la tabla `facturacion`
 --
 
-INSERT INTO `facturacion` (`id`, `id_usuario`, `nombre`, `apellido`, `cedula`, `fecha`, `fecha_entrega`, `telefono`, `empresa`, `direccion`, `barrio`, `referencia`, `valor`, `num_cuotas`, `observaciones`) VALUES
-(2, 1, 'geremy', 'peñalosa', 1123, '2025-03-05 05:00:00', '0000-00-00 00:00:00', '3196683319', 'ed', 'calle 62a sur #73c-21', 'bosa', 'avon', 12345, '2', ''),
-(3, 2, 'prueba', 'dos', 123456, '2025-03-06 05:00:00', '0000-00-00 00:00:00', '2121212', 's', 'calle 62a sur #73c-21', 'bosa', 'avon', 12356432, '2', 'xd'),
-(4, 1, 'diego', 'pedraza', 1213342, '2025-03-04 05:00:00', '0000-00-00 00:00:00', '3195412234', 'el mejor', 'calle 62a sur #73c-21', 'bosa', 'avon', 123435, '1', 'lo se es el mejor'),
-(5, 1, 'diego alejandro', 'pedraza rojas', 1016834930, '2025-03-01 05:00:00', '0000-00-00 00:00:00', '3195412234', 'el mejor', 'calle 62a sur #73c-21', 'perdomo', '0', 999999, '1', 'soy el mejor lo se'),
-(6, 1, 'prueba', 'prueba 2', 2314, '2025-03-05 05:00:00', '0000-00-00 00:00:00', '123445', 'ed', 'calle 62a sur #73c-21', 'bosa', 'avon', 123, '2', 'eds'),
-(7, 1, 'prueba', 'prueba 2', 2314, '2025-03-05 05:00:00', '0000-00-00 00:00:00', '123445', 'ed', 'calle 62a sur #73c-21', 'bosa', 'avon', 123, '2', 'eds'),
-(8, 3, 'diego', 'pedraza rojas', 1016834930, '2025-03-10 05:00:00', '2025-03-14 05:00:00', '3195412234', 'ed', 'calle 62a sur #73c-21', 'bosa', '0', 1235123, '1', 'sin cajas'),
-(9, 4, 'alejandro', 'pedraza rojas', 123123, '2025-03-01 05:00:00', '2025-03-10 05:00:00', '3196683319', 'ed', 'calle 62a sur #73c-21', 'bosa', '0', 2131134, '2', 'con cajas y cinta');
+
+-- facturacion_db.usuarios definition
+
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `contraseña` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- facturacion_db.facturas_auditoria definition
+
+CREATE TABLE `facturas_auditoria` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_factura` int DEFAULT NULL,
+  `usuario` varchar(50) DEFAULT NULL,
+  `accion` enum('INSERT','UPDATE','DELETE') DEFAULT NULL,
+  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `datos_anteriores` text,
+  `datos_nuevos` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Disparadores `facturacion`
@@ -92,3 +108,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

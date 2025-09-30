@@ -82,8 +82,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label>Cédula:</label>
         <input type="number" name="cedula" value="<?php echo $factura['cedula']; ?>" required><br><br>
 
+        <!-- Campo Fecha (solo visible pero NO editable) -->
         <label>Fecha:</label>
-        <input type="date" name="fecha" value="<?php echo date('Y-m-d', strtotime($factura['fecha'])); ?>" required><br><br>
+        <input type="date" value="<?php echo date('Y-m-d', strtotime($factura['fecha'])); ?>" disabled><br><br>
+
+        <!-- Mantener valor en hidden para que se envíe en el POST -->
+        <input type="hidden" name="fecha" value="<?php echo date('Y-m-d', strtotime($factura['fecha'])); ?>">
+
 
         <label>Fecha de entrega:</label>
         <input type="date" name="fecha_entrega" value="<?php echo date('Y-m-d', strtotime($factura['fecha_entrega'])); ?>" required><br><br>

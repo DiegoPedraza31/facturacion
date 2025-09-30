@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conexion = new mysqli("localhost", "root", "", "facturacion_db");
+$conexion = new mysqli("localhost", "u958365432_root", "Inicial2026*", "u958365432_facturacion_db");
 
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);

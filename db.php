@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$dbname = "facturacion_db";
-$username = "root";
-$password = "";
+$dbname = "u958365432_facturacion_db";
+$username = "u958365432_root";
+$password = "Inicial2026*";
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
